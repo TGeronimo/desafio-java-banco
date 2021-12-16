@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+
 public abstract class Conta implements IConta {
 
     private static final int AGENCIA_PADRAO = 1;

@@ -20,4 +20,8 @@ public class Banco {
     public void setContas(List<Conta> contas) {
         this.contas = contas;
     }
+
+    public String criarConta(Cliente cliente, Conta conta) {
+        return "Conta criada com sucesso! + informações da conta";
+    }
 }
