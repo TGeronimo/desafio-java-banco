@@ -1,27 +1,28 @@
+import lombok.Getter;
+
+import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class Banco {
 
     private String nome;
-    private List<Conta> contas;
-
-    public String getNome() {
-        return nome;
-    }
+    private List<Conta> contas = new ArrayList<>();
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public List<Conta> getContas() {
-        return contas;
+    public void setContas(Conta conta) {
+        this.contas.add(conta);
     }
 
-    public void setContas(List<Conta> contas) {
-        this.contas = contas;
+    public Conta criarConta(Cliente cliente, TipoConta tipoConta) {
+        Conta conta = (tipoConta == TipoConta.CORRENTE) ?
+                (new ContaCorrente(cliente)) : (new ContaPoupanca(cliente));
+        setContas(conta);
+        return conta;
     }
 
-    public String criarConta(Cliente cliente, Conta conta) {
-        return "Conta criada com sucesso! + informações da conta";
-    }
+
 }

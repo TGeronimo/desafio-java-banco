@@ -1,7 +1,12 @@
+import lombok.Getter;
+import lombok.ToString;
+
 import java.io.File;
 import java.io.FileWriter;
 
-public abstract class Conta implements IConta {
+@Getter
+@ToString
+abstract class Conta implements IConta {
 
     private static final int AGENCIA_PADRAO = 1;
     private static int SEQUENCIAL = 1;
@@ -9,24 +14,12 @@ public abstract class Conta implements IConta {
     protected int agencia;
     protected int numero;
     protected double saldo;
-    private Cliente cliente;
+    private final Cliente cliente;
 
     public Conta(Cliente cliente) {
         agencia = AGENCIA_PADRAO;
         numero = SEQUENCIAL++;
         this.cliente = cliente;
-    }
-
-    public int getAgencia() {
-        return agencia;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public double getSaldo() {
-        return saldo;
     }
 
     @Override
@@ -48,10 +41,9 @@ public abstract class Conta implements IConta {
     }
 
     protected void imprimirInfoComuns() {
-        System.out.println(String.format("Titular: %s", this.cliente.getNome()));
-        System.out.println(String.format("Agência: %d", this.agencia));
-        System.out.println(String.format("Número: %d", this.numero));
-        System.out.println(String.format("Saldo: %.2f", this.saldo));
+        System.out.printf("Titular: %s%n", this.cliente.getNome());
+        System.out.printf("Agência: %d%n", this.agencia);
+        System.out.printf("Número: %d%n", this.numero);
+        System.out.printf("Saldo: %.2f%n", this.saldo);
     }
-
 }

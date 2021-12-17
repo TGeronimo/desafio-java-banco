@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -5,14 +7,17 @@ public class Main {
         Cliente novoCliente = new Cliente();
         novoCliente.setNome("Thiago");
 
-        Conta cc = new ContaCorrente(novoCliente);
-        cc.depositar(100);
+        Banco banco = new Banco();
+        Conta cc = banco.criarConta(novoCliente, TipoConta.CORRENTE);
+        Conta poupanca = banco.criarConta(novoCliente, TipoConta.POUPANCA);
 
-        Conta poupanca = new ContaPoupanca(novoCliente);
+        cc.depositar(100);
 
         cc.transferir(50, poupanca);
 
         cc.imprimirExtrato();
         poupanca.imprimirExtrato();
+
+        System.out.println(banco.getContas());
     }
 }
