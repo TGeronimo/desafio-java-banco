@@ -1,9 +1,6 @@
 import lombok.Getter;
 import lombok.ToString;
 
-import java.io.File;
-import java.io.FileWriter;
-
 @Getter
 @ToString
 abstract class Conta implements IConta {

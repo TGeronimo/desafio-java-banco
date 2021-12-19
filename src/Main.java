@@ -19,5 +19,6 @@ public class Main {
         poupanca.imprimirExtrato();
 
         System.out.println(banco.getContas());
+        System.out.println(banco.listaClientes());
     }
 }
